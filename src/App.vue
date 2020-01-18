@@ -11,30 +11,34 @@
           </div>
         </a-layout-header>
         <a-layout-content style="padding: 0 50px">
-          <p>Dashboard</p>
-          <a-tabs defaultActiveKey="2">
-            <a-tab-pane key="1">
-              <span slot="tab">
-                <a-icon type="stock" />
-                Credit Score
-              </span>
-              Tab 1
-            </a-tab-pane>
-            <a-tab-pane key="2">
-              <span slot="tab">
-                <a-icon type="fire" />
-                Fuel
-              </span>
-              Tab 2
-            </a-tab-pane>
-            <a-tab-pane key="3">
-              <span slot="tab">
-                <a-icon type="shopping-cart" />
-                Groceries
-              </span>
-              <!-- <Hello></Hello> -->
-            </a-tab-pane>
-          </a-tabs>
+          <a-breadcrumb style="margin: 16px 0">
+            <a-breadcrumb-item>Dashboard</a-breadcrumb-item>
+          </a-breadcrumb>
+          <div class="tab-container">
+            <a-tabs defaultActiveKey="1" type="card">
+              <a-tab-pane key="1">
+                <span slot="tab">
+                  <a-icon type="stock" />
+                  Credit Score
+                </span>
+                Tab 1
+              </a-tab-pane>
+              <a-tab-pane key="2">
+                <span slot="tab">
+                  <a-icon type="fire" />
+                  Fuel
+                </span>
+                Tab 2
+              </a-tab-pane>
+              <a-tab-pane key="3">
+                <span slot="tab">
+                  <a-icon type="shopping-cart" />
+                  Groceries
+                </span>
+                <!-- <Hello></Hello> -->
+              </a-tab-pane>
+            </a-tabs>
+          </div>
           <!-- <div :style="{ background: '#fff', padding: '24px', minHeight: '280px' }">
             <main>
               <router-view></router-view>
@@ -110,4 +114,51 @@ header span {
 #components-layout-demo-top .top-menus {
     float: right;
   }
+
+.tab-container {
+  /* background: #f5f5f5; */
+  overflow: hidden;
+  /* padding: 24px; */
+}
+.tab-container > .ant-tabs-card > .ant-tabs-content {
+  height: 120px;
+  margin-top: -16px;
+}
+
+.tab-container > .ant-tabs-card > .ant-tabs-content > .ant-tabs-tabpane {
+  background: #fff;
+  padding: 16px;
+}
+
+.tab-container > .ant-tabs-card > .ant-tabs-bar {
+  border-color: #fff;
+}
+
+.tab-container > .ant-tabs-card > .ant-tabs-tab:hover {
+  color: #37ac70 !important;
+}
+
+a:hover {
+  color: #37ac70 !important;
+}
+
+.tab-container > .ant-tabs-card > .ant-tabs-bar .ant-tabs-tab {
+  border-color: transparent;
+  background: transparent;
+}
+
+.tab-container > .ant-tabs-card > .ant-tabs-bar .ant-tabs-tab-active {
+  color: #37ac70;
+  background-color: #fff;
+  border-width: 3px 0 0 0;
+  border-style: solid;
+  border-color: #37ac70;
+}
+
+  /* .ant-tabs-nav .ant-tabs-tab-active {
+    color: #37ac70;
+    background-color: white;
+    border-width: 3px 0 0 0;
+    border-style: solid;
+  } */
 </style>
