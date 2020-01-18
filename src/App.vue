@@ -10,8 +10,8 @@
             <a-icon type="bars" />
           </div>
         </a-layout-header>
-        <a-layout-content style="padding: 0 50px">
-          <a-breadcrumb style="margin: 16px 0">
+        <a-layout-content>
+          <a-breadcrumb style="margin: 16px 5px">
             <a-breadcrumb-item>Dashboard</a-breadcrumb-item>
           </a-breadcrumb>
           <div class="tab-container">
@@ -19,21 +19,21 @@
               <a-tab-pane key="1">
                 <span slot="tab">
                   <a-icon type="stock" />
-                  Credit Score
+                  <p class="tab-label">Credit Score</p>
                 </span>
-                Tab 1
+                <Score/>
               </a-tab-pane>
               <a-tab-pane key="2">
                 <span slot="tab">
                   <a-icon type="fire" />
-                  Fuel
+                  <p class="tab-label">Fuel</p>
                 </span>
                 Tab 2
               </a-tab-pane>
               <a-tab-pane key="3">
                 <span slot="tab">
                   <a-icon type="shopping-cart" />
-                  Groceries
+                  <p class="tab-label">Groceries</p>
                 </span>
                 <!-- <Hello></Hello> -->
               </a-tab-pane>
@@ -53,12 +53,12 @@
 </template>
 
 <script>
-import Hello from './components/Hello'
+import Score from './components/Score'
 
 export default {
   name: 'app',
   components: {
-    Hello
+    Score
   }
 }
 </script>
@@ -155,10 +155,9 @@ a:hover {
   border-color: #37ac70;
 }
 
-  /* .ant-tabs-nav .ant-tabs-tab-active {
-    color: #37ac70;
-    background-color: white;
-    border-width: 3px 0 0 0;
-    border-style: solid;
-  } */
+@media screen and (max-width:350px) {
+  .tab-label{
+    display: none;
+  }
+}
 </style>
