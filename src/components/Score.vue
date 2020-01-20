@@ -1,8 +1,8 @@
 <template>
   <div class="score">
-    <a-row>
-      <a-col :span="12">My Credit Score</a-col>
-      <a-col style="text-align:right" :span="12">View Report</a-col>
+    <a-row style="border-bottom: 1px solid #f0f2f5;">
+      <a-col :span="12" class="label">My Credit Score</a-col>
+      <a-col class="label report" style="text-align:right" :span="12">View Report</a-col>
     </a-row>
     <a-row>
       <a-col :offset="9" :span="6">
@@ -66,22 +66,12 @@ export default {
   color: #fff;
 }
 
-h1, h2 {
-  font-weight: normal;
+.label {
+  font-weight: bolder;
 }
 
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #35495E;
+.report {
+  color: #f6961e;
 }
 
 .pointer {
