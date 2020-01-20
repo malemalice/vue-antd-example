@@ -37,7 +37,7 @@
                   <van-icon name="shopping-cart-o" />
                 </div>
                 <div class="tab-content">
-
+                  <Cart/>
                 </div>
               </van-tab>
             </van-tabs>
@@ -77,12 +77,14 @@
 <script>
 import Score from './components/Score'
 import Fuel from './components/Fuel'
+import Cart from './components/Cart'
 
 export default {
   name: 'app',
   components: {
     Score,
-    Fuel
+    Fuel,
+    Cart
   },
   data () {
     return {

@@ -110,25 +110,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
-.info{
-  text-align: center;
-  margin-bottom: 10px;
-}
-
-.left, .right {
-  padding: 5px;
-}
-
-.info .left{
-  background-color: #f0f2f5;
-  font-weight: bolder;
-  color: #000;
-}
-
-.info .right{
-  background-color: #AAD31E;
-  color: #fff;
-}
 
 .pointer {
   fill:#000 !important;
