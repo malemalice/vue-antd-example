@@ -5,40 +5,19 @@
     </a-row>
     <a-row>
       <a-col :span="6" :offset="9">
-        <div class="cart-item label">
+        <div class="cart-item label" v-for="item in shoppingList">
           <a-row type="flex" justify="space-around" align="middle">
             <a-col :span="4">
-              IMAGE
+              <img :src=item.imgUrl>
             </a-col>
             <a-col :span="12">
               <p>IMAGE BRAND</p>
-              <p>Title</p>
+              <p>{{item.name}}</p>
               <a-row>
                 <a-col :span="12">
-                  <span class="discount">Discount</span></br>0%
+                  <span class="discount">Discount</span></br>{{item.discount ? item.discount: '0'}}%
                 </a-col>
-                <a-col :span="12" class="price" style="text-align:center">$8.00</a-col>
-              </a-row>
-            </a-col>
-            <a-col :span="2" style="text-align:center;" >
-              <a-icon type="delete" class="class-height-100"/>
-            </a-col>
-          </a-row>
-        </div>
-
-        <div class="cart-item label">
-          <a-row type="flex" justify="space-around" align="middle">
-            <a-col :span="4">
-              IMAGE
-            </a-col>
-            <a-col :span="12">
-              <p>IMAGE BRAND</p>
-              <p>Title</p>
-              <a-row>
-                <a-col :span="12">
-                  <span class="discount">Discount</span></br>0%
-                </a-col>
-                <a-col :span="12" class="price" style="text-align:center">$8.00</a-col>
+                <a-col :span="12" class="price" style="text-align:center">${{item.latestPrice}}</a-col>
               </a-row>
             </a-col>
             <a-col :span="2" style="text-align:center;" >
@@ -64,29 +43,29 @@
     </a-row>
 
     <div class="scrolling-wrapper">
-      <div class="card" v-for="item in listData">
+      <div class="card" v-for="item in todaySpecial">
         <a-row>
           <a-col :span="12">
-            Brand {{item}}
+            Brand
           </a-col>
           <a-col :span="12">
             <a-icon type="heart" />
           </a-col>
           <a-row>
             <a-col :span="24">
-              IMG
+              <img :src=item.imgUrl>
             </a-col>
           </a-row>
           <a-row>
             <a-col :span="24">
-              Title
+              {{item.name}}
             </a-col>
           </a-row>
           <a-col :span="12" class="price" style="text-align:center">
-            $8.00
+            ${{item.latestPrice}}
           </a-col>
           <a-col :span="12">
-            <span class="discount">Discount</span></br>0%
+            <span class="discount">Discount</span></br>{{item.discount ? item.discount: '0'}}%
           </a-col>
         </a-row>
       </div>
@@ -99,12 +78,22 @@
 
 
 <script>
+import carts from '../assets/data/shopping_list.json'
+import specials from '../assets/data/specials.json'
+
 export default {
   name: 'cart',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js PWA',
-      listData: [1, 2, 3, 4, 5, 6, 7, 8]
+      msg: 'Welcome to Your Vue.js PWA'
+    }
+  },
+  computed: {
+    shoppingList () {
+      return carts.shoppingList
+    },
+    todaySpecial () {
+      return specials.todaySpecial
     }
   },
   methods: {
