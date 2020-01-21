@@ -59,56 +59,52 @@
       </a-col>
     </a-row>
 
-    <a-row>
+    <a-row class="sub-header">
       <a-col :span="12" class="label">Today's top <span class="price">groceries</span> specials</a-col>
     </a-row>
 
-    <div style="background-color: #ececec; padding: 20px;">
-      <a-row :gutter="16">
-        <a-col :span="8">
-          <a-card title="Card title" :bordered="false">
-            <p>card content</p>
-          </a-card>
-        </a-col>
-        <a-col :span="8">
-          <a-card title="Card title" :bordered="false">
-            <p>card content</p>
-          </a-card>
-        </a-col>
-        <a-col :span="8">
-          <a-card title="Card title" :bordered="false">
-            <p>card content</p>
-          </a-card>
-        </a-col>
-
-        <a-col :span="8">
-          <a-card title="Card title" :bordered="false">
-            <p>card content</p>
-          </a-card>
-        </a-col>
-        <a-col :span="8">
-          <a-card title="Card title" :bordered="false">
-            <p>card content</p>
-          </a-card>
-        </a-col>
-        <a-col :span="8">
-          <a-card title="Card title" :bordered="false">
-            <p>card content</p>
-          </a-card>
-        </a-col>
-      </a-row>
+    <div class="scrolling-wrapper">
+      <div class="card" v-for="item in listData">
+        <a-row>
+          <a-col :span="12">
+            Brand {{item}}
+          </a-col>
+          <a-col :span="12">
+            <a-icon type="heart" />
+          </a-col>
+          <a-row>
+            <a-col :span="24">
+              IMG
+            </a-col>
+          </a-row>
+          <a-row>
+            <a-col :span="24">
+              Title
+            </a-col>
+          </a-row>
+          <a-col :span="12" class="price" style="text-align:center">
+            $8.00
+          </a-col>
+          <a-col :span="12">
+            <span class="discount">Discount</span></br>0%
+          </a-col>
+        </a-row>
+      </div>
     </div>
+
   </div>
 
 </template>
 
-<script>
 
+
+<script>
 export default {
   name: 'cart',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js PWA'
+      msg: 'Welcome to Your Vue.js PWA',
+      listData: [1, 2, 3, 4, 5, 6, 7, 8]
     }
   },
   methods: {
@@ -122,8 +118,60 @@ export default {
 }
 </script>
 
+<style lang="scss" scoped>
+h2 {
+  color: #fff;
+}
+
+.scrolling-wrapper {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+
+  .card {
+    display: inline-block;
+  }
+}
+
+.scrolling-wrapper-flexbox {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+
+  .card {
+    flex: 0 0 auto;
+    margin-right: 3px;
+  }
+}
+
+.card {
+  border: 2px solid #f0f2f5;
+  width: 150px;
+  height: 175px;
+  margin: 0 5px;
+  padding: 2px;
+}
+
+.scrolling-wrapper, .scrolling-wrapper-flexbox {
+  height: 200px;
+  margin-bottom: 20px;
+  width: 100%;
+  -webkit-overflow-scrolling: touch;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.sub-header {
+  border-bottom: 2px solid #f0f2f5;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+}
+</style>
+
+
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
+<style scoped>
 .cart-item{
   border: 2px solid #f0f2f5;
   padding: 5px;
@@ -137,4 +185,5 @@ export default {
   font-size: smaller;
   font-weight: 100;
 }
+
 </style>
