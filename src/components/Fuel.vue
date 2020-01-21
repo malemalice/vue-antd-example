@@ -12,8 +12,11 @@
     </a-row>
     <a-row>
       <a-col :span="12" :offset="6">
-        <a href="#">e10</a>
-        <a href="#">lpg</a>
+        <a-radio-group defaultValue="e10" v-model="petrolType" buttonStyle="solid">
+          <a-radio-button value="e10">e10</a-radio-button>
+          <a-radio-button value="lpg">lpg</a-radio-button>
+        </a-radio-group>
+
         <a-carousel :afterChange="changePage" arrows>
           <div
             slot="prevArrow"
@@ -31,39 +34,18 @@
             <a-icon type="right-circle" />
           </div>
 
-          <div>
-            <div class="item-fuel">
+          <div v-for="page in results">
+            <div class="item-fuel" v-for="item in page">
               <a-row>
                 <div>
-                  <p class="label" style="margin: 20px;"><a-icon type="fire" /> BP - Bankstown</p>
+                  <p class="label" style="margin: 20px;"><a-icon type="fire" /> {{item.stations.name}}</p>
                 </div>
                 <a-row class="diagonal-split-background">
                     <a-col :span="6" :offset="6" >
-                      <div>e10</div>
+                      <div>{{petrolType}}</div>
                     </a-col>
                     <a-col :span="6" :offset="6">
-                      <div>180.1</div>
-                    </a-col>
-                </a-row>
-              </a-row>
-              <a-row class="fuel-detail">
-                <a-col>
-                  <p class="label">Get Directions</p>
-                </a-col>
-              </a-row>
-            </div>
-
-            <div class="item-fuel">
-              <a-row>
-                <div>
-                  <p class="label" style="margin: 20px;"><a-icon type="fire" /> BP - Bankstown</p>
-                </div>
-                <a-row class="diagonal-split-background">
-                    <a-col :span="6" :offset="6" >
-                      <div>e10</div>
-                    </a-col>
-                    <a-col :span="6" :offset="6">
-                      <div>180.1</div>
+                      <div>{{item.price || '-'}}</div>
                     </a-col>
                 </a-row>
               </a-row>
@@ -74,12 +56,6 @@
               </a-row>
             </div>
           </div>
-
-          <div></div>
-          <div></div>
-          <div></div>
-
-
         </a-carousel>
       </a-col>
     </a-row>
@@ -89,12 +65,21 @@
 </template>
 
 <script>
+import petrol from '../assets/data/petrol.json'
+import * as moment from 'moment/moment'
 
 export default {
   name: 'fuel',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js PWA'
+      petrolType: 'e10',
+      results: []
+    }
+  },
+  watch: {
+    petrolType (nw, old) {
+      console.log(nw)
+      this.fetch(petrol)
     }
   },
   methods: {
@@ -103,7 +88,51 @@ export default {
     },
     changePage (x) {
       console.log(x)
+    },
+    splitArray (arr, n) {
+      return arr.reduce((resultArray, item, index) => {
+        const chunkIndex = Math.floor(index / n)
+        if (!resultArray[chunkIndex]) {
+          resultArray[chunkIndex] = [] // start a new chunk
+        }
+        resultArray[chunkIndex].push(item)
+        return resultArray
+      }, [])
+    },
+    sortPrice (obj) {
+      var arr = []
+      for (var key in obj) {
+        arr.push(Object.assign(obj[key], {date: key}))
+      }
+      const sorted = arr.sort(this.sortByDate)
+      return sorted[0].daily_prices[this.petrolType]
+    },
+    sortByDate (a, b) {
+      return moment(b.date, 'YYYYMMDD').unix() - moment(a.date, 'YYYYMMDD').unix()
+    },
+    fetch (res) {
+      // filter by selected petrol type
+      const filtered = this.filter(res)
+      this.results = filtered
+    },
+    filter (arr) {
+      const results = arr.petrolStations.filter(item => {
+        return item.fuel_type === this.petrolType
+      })
+      const temps = results[0].stations.map(x => {
+        // sorted price by latest date
+        return {
+          stations: x,
+          price: this.sortPrice(x.price)
+        }
+      })
+      // split result for pagination on carousel
+      return this.splitArray(temps, 2)
     }
+  },
+  mounted () {
+    // imitating get response from API
+    this.fetch(petrol)
   }
 }
 </script>
