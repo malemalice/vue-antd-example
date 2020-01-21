@@ -4,7 +4,7 @@
       <a-col :span="12" class="label">My Shopping List</a-col>
     </a-row>
     <a-row>
-      <a-col :span="8" :offset="8">
+      <a-col :sm="{span:8,offset:8}" :xs="{span:24}">
         <div class="cart-item label" v-for="item in shoppingList">
           <a-row type="flex" justify="space-around" align="middle">
             <a-col :span="4">
@@ -32,7 +32,7 @@
     </a-row>
 
     <a-row>
-      <a-col :span="8" :offset="8">
+      <a-col :sm="{span:8,offset:8}" :xs="{span:24}">
         <a-row style="background-color: #f0f2f5;">
           <a-col class="left label" :span="12">Total:</a-col>
           <a-col class="right price label" style="text-align:right" :span="12">$90</a-col>
@@ -41,7 +41,7 @@
     </a-row>
 
     <a-row class="sub-header">
-      <a-col :span="12" class="label">Today's top <span class="price">groceries</span> specials</a-col>
+      <a-col :span="24" class="label">Today's top <span class="price">groceries</span> specials</a-col>
     </a-row>
 
     <div class="scrolling-wrapper">
@@ -160,8 +160,9 @@ h2 {
 
 .sub-header {
   border-bottom: 2px solid #f0f2f5;
-  margin-bottom: 20px;
-  padding-bottom: 10px;
+  border-top: 2px solid #f0f2f5;
+  margin: 20px 0;
+  padding: 10px 0;
 }
 </style>
 

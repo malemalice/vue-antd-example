@@ -1,8 +1,8 @@
 <template>
   <div class="score">
     <a-row class="filter">
-      <a-col :span="6" :offset="6" class="label">Show Fuel Price for</a-col>
-      <a-col :span="6" style="text-align:right">
+      <a-col :sm="{span:6,offset:6}" :xs="{span:9,offset:3}" class="label">Show Fuel Price for</a-col>
+      <a-col :sm="{span:6}" :xs="{span:9}" style="text-align:right">
         <a-select defaultValue="bp" style="width: 120px" @change="changeOpt">
           <a-select-option value="syd">Haystack, AUD, 102</a-select-option>
           <a-select-option value="bp">Bankstown, NSW, 220</a-select-option>
@@ -11,7 +11,7 @@
       </a-col>
     </a-row>
     <a-row>
-      <a-col :span="12" :offset="6">
+      <a-col :sm="{span:12,offset:6}" :xs="{span:18,offset:3}">
 
         <a-radio-group defaultValue="e10" v-model="petrolType" buttonStyle="solid" style="margin:5px">
           <a-radio-button value="e10">e10</a-radio-button>

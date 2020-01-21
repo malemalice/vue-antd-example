@@ -5,7 +5,7 @@
       <a-col class="label report" style="text-align:right" :span="12">View Report</a-col>
     </a-row>
     <a-row>
-      <a-col :offset="9" :span="6">
+      <a-col :sm="{span:3,offset:9}" :xs="{span:3,offset:1}">
         <vue-speedometer
           :needleHeightRatio="0.4"
           :maxSegmentLabels="0"
@@ -17,12 +17,12 @@
       </a-col>
     </a-row>
     <a-row class="info">
-      <a-col class="left" :offset="9" :span="3">{{score}}</a-col>
-      <a-col class="right" :span="3">Very Good</a-col>
+      <a-col class="left" :sm="{span:3,offset:9}" :xs="{span:10,offset:2}">{{score}}</a-col>
+      <a-col class="right" :sm="{span:3}" :xs="{span:10}">Very Good</a-col>
     </a-row>
 
     <a-row>
-      <a-col style="text-align:center" :offset="9" :span="6">Last Updated {{fetch_date}}</a-col>
+      <a-col style="text-align:center" :sm="{span:6,offset:9}">Last Updated {{fetch_date}}</a-col>
     </a-row>
   </div>
 
@@ -68,6 +68,10 @@ export default {
 .info{
   text-align: center;
   margin-bottom: 10px;
+}
+
+.score{
+  min-height: 400px;
 }
 
 .left, .right {
