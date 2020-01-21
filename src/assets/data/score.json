@@ -1,0 +1,35 @@
+{
+  "response": [
+    {
+      "id":1579,
+      "userId":127,
+      "categoryId":4,
+      "optionName":"credit_score_value",
+      "option_value":{
+        "creditscore":"794",
+        "fetch_date":"2019-10-02"
+      }
+    },
+    {
+      "id":1580,
+      "userId":127,
+      "categoryId":4,
+      "optionName":"credit_score_value",
+      "option_value":{
+        "creditscore":"794",
+        "fetch_date":"2019-10-03"
+      }
+    },
+    {
+      "id":1581,
+      "userId":127,
+      "categoryId":4,
+      "optionName":"credit_score_value",
+      "option_value":{
+        "creditscore":"794",
+        "fetch_date":"2019-10-01"
+      }
+    }
+  ],
+  "total_history":3
+}
