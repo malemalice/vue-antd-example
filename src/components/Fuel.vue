@@ -1,8 +1,8 @@
 <template>
   <div class="score">
-    <a-row>
-      <a-col :span="12" class="label">Show Fuel Price for</a-col>
-      <a-col :span="12">
+    <a-row class="filter">
+      <a-col :sm="{span:6,offset:6}" :xs="{span:9,offset:3}" class="label">Show Fuel Price for</a-col>
+      <a-col :sm="{span:6}" :xs="{span:9}" style="text-align:right">
         <a-select defaultValue="bp" style="width: 120px" @change="changeOpt">
           <a-select-option value="syd">Haystack, AUD, 102</a-select-option>
           <a-select-option value="bp">Bankstown, NSW, 220</a-select-option>
@@ -11,8 +11,9 @@
       </a-col>
     </a-row>
     <a-row>
-      <a-col :span="12" :offset="6">
-        <a-radio-group defaultValue="e10" v-model="petrolType" buttonStyle="solid">
+      <a-col :sm="{span:12,offset:6}" :xs="{span:18,offset:3}">
+
+        <a-radio-group defaultValue="e10" v-model="petrolType" buttonStyle="solid" style="margin:5px">
           <a-radio-button value="e10">e10</a-radio-button>
           <a-radio-button value="lpg">lpg</a-radio-button>
         </a-radio-group>
@@ -44,7 +45,7 @@
                     <a-col :span="6" :offset="6" >
                       <div>{{petrolType}}</div>
                     </a-col>
-                    <a-col :span="6" :offset="6">
+                    <a-col :span="6" :offset="6" style="color:#fff">
                       <div>{{item.price || '-'}}</div>
                     </a-col>
                 </a-row>
@@ -139,6 +140,16 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
+.ant-radio-group-solid .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled),
+.ant-radio-group-solid .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):hover {
+  background: #37ac70;
+  border-color: #37ac70;
+}
+
+.top-header {
+  border-bottom: 1px solid #f0f2f5;
+  padding-bottom: 5px;
+}
 
 .pointer {
   fill:#000 !important;
