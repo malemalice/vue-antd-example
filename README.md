@@ -11,3 +11,4 @@ In the project directory, you can run:
 `npm install`
 3. run development
 `npm run start`
+4. open http://localhost:8080
